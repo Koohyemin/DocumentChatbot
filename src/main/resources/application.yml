@@ -1,0 +1,40 @@
+server:
+  address: localhost
+  port: 8080
+
+spring:
+  application:
+    name: doc-chatbot
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/doc_chatbot
+    username: postgres
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+  ai:
+    ollama:
+      base-url: http://127.0.0.1:11434
+      chat:
+        options:
+          model: llama3.2:1b
+      embedding:
+        options:
+          model: nomic-embed-text
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
